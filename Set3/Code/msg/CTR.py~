@@ -1,0 +1,22 @@
+#! usr/bin/python3
+
+# Global imports
+
+import struct
+
+# Package imports
+
+def counter_16(number, endian="little"):
+    """This function returns a byte struct of number entered.
+    Default is little endian  (endian="little" | "big")"""
+
+    divisor = int('ff' * 8, base=16) + 1
+    lower_counter = number % divisor
+    higher_counter = number // divisor
+
+    if endian.lower() == "little":
+        end = "<"
+    if endian.lower() == "big":
+        end = ">"
+    
+    return struct.pack(end + "QQ", higher_counter, lower_counter)

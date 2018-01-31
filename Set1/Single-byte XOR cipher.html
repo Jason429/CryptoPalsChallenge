@@ -1,0 +1,152 @@
+<html><head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta content="Thomas Ptacek, Sean Devlin, and Alex Balducci" name="author">
+    <title>Single-byte XOR cipher</title>
+    <link href="Single-byte%20XOR%20cipher_files/bootstrap.css" media="all" rel="stylesheet" type="text/css">
+    <link href="Single-byte%20XOR%20cipher_files/app.css" media="all" rel="stylesheet" type="text/css">
+    <link href="Single-byte%20XOR%20cipher_files/fonts.css" rel="stylesheet" type="text/css">
+    <link href="Single-byte%20XOR%20cipher_files/prism.css" rel="stylesheet" type="text/css">
+    <script src="Single-byte%20XOR%20cipher_files/ga.js" async="" type="text/javascript"></script><script src="Single-byte%20XOR%20cipher_files/prism.js"></script>
+    <style>
+      body { 
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            <a href="http://cryptopals.com/">the matasano crypto challenges</a>
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <li>
+              <a href="http://cryptopals.com/">Challenges</a>
+            </li>
+            <li>
+              <a href="http://cryptopals.com/sets/1">Set 1</a>
+            </li>
+            <li class="active">
+              <a href="http://cryptopals.com/sets/1/challenges/3">Challenge 3</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <ul class="nav nav-pills nav-stacked" id="languages">
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/cpp">C++</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/ruby">Ruby</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/python">Python</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/golang">Golang</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/csharp">C#</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/java">Java</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/scala">Scala</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/haskell">Haskell</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/php">PHP</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/3/c">C</a>
+  </li>
+  
+  
+</ul>
+
+        </div>
+        <div class="col-md-10">
+          <h3>Single-byte XOR cipher</h3>
+          <p>
+  The hex encoded string:
+</p>
+<pre>1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736</pre>
+<p>
+  ... has been XOR'd against a single character. Find the key, decrypt
+  the message.
+</p>
+<p>
+  You can do this by hand. But don't: write code to do it for you.
+</p>
+<p>
+  How? Devise some method for "scoring" a
+  piece of English plaintext. Character frequency is a good metric.
+  Evaluate each output and choose the one with the best score.
+</p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Achievement Unlocked</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      You now have our permission to make "ETAOIN SHRDLU" jokes on Twitter.
+    </p>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-68682-6']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</body></html>

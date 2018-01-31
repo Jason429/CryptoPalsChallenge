@@ -1,0 +1,96 @@
+#!/usr/bin/python3.4
+
+import base64
+from sys import getdefaultencoding
+from msg.convert import convert_binary as cb
+from random import choice
+from msg.defs import hamming_distance_test
+from msg.defs import skip_gen
+from msg.defs import insert_gen
+from msg.defs import DCRYPT
+from msg.defs import character_check
+from msg.defs import englishtest
+from msg.defs import xor as func_xor
+from msg.defs import single
+
+
+# Variables
+maxkeysize = 80   # max keysize iteration
+ENCODING = getdefaultencoding()
+maxhammingiter =4
+
+keysizerange = range(2,maxkeysize + 1)
+keysizes = []
+for i in keysizerange:
+    keysizes.append(i)
+
+f = open('/home/jason/Projects/Crypto/Set1/It\'sOnFile.txt','r')
+
+# Copy msg to memory in whole and remove newline
+original = f.read()
+original = original.strip('\n')
+f.close()
+# Now convert base64 to bytes
+original = base64.b64decode(original)
+boriginal = cb(original,'bit8')
+h_test,best_val = hamming_distance_test(boriginal,maxkeysize,
+                               maxhammingiter)
+
+# With likely answer of keysize, test
+testkeysize = 0
+for i in h_test.items():
+    if i[1] == best_val[0]:
+        testkeysize = i[0]
+        
+workingmsg=bytearray(original)
+xor_offset = {}
+d = DCRYPT()
+d.standard_xor()  # Set XORs fm 0 - 255
+num = 1  # Number checked
+testkeysize = 2
+
+#############FORCE TO TESTKEY 4 #################
+########Was a second choice for keysize #########
+# Break msg into blocks of XOR
+d.WORK_MSG = []
+count = 0
+# Break workingmsg into blocks of key size
+while True:
+    if len(workingmsg[count * testkeysize:(count +1) * testkeysize]) != 0:
+        d.WORK_MSG.append(workingmsg[count * testkeysize:
+                                     (count+1) * testkeysize])
+        count += 1
+    else:
+        break
+# Generate SOLVE_BLOCK to test
+# This is blocks of single multiples.
+# To be solved with single byte XOR (Already have code)
+
+for i in range(len(d.WORK_MSG[0])):
+	d.SOLVE_BLOCKS[i]=bytearray()
+	for j in d.WORK_MSG:
+		try:
+			d.SOLVE_BLOCKS[i].append(j[i])
+		except:
+			continue
+for i in range(len(d.SOLVE_BLOCKS)):
+    d.BEST[i]= single(d.SOLVE_BLOCKS[i],d.WORK_XOR,char_weight=10)
+
+tempanswer = bytearray()
+tempkey = bytearray()
+for length in range(len(d.SOLVE_BLOCKS[0])):
+    for i in range(len(d.BEST)):
+        try:
+            b = tuple(d.BEST[i].items())
+            tempkey = tempkey + b[0][0]
+            tempanswer = tempanswer + b[0][1][1][length]
+        except:
+            pass
+            
+    
+b = single(d.SOLVE_BLOCKS[0],d.WORK_XOR,char_weight=10)
+print(tempkey)
+print(tempanswer)
+
+### b doesn't work because it doesn't have a weight for msg ###
+

@@ -1,0 +1,70 @@
+#!/usr/bin/python3
+
+# This is to parse info
+
+# Profile  func("name@someone.com") should return
+#{
+#  email: 'name@someone.com',
+#  uid: 10,
+#  role: 'user'
+#}
+
+# Encoded as email=name@someone.com&uid=10&role=user
+
+# Using only the user input to profile_for() (as an oracle to generate "valid" ciphertexts)
+# and the ciphertexts themselves, make a role=admin profile.
+
+
+import json
+from random import randint
+from msg.AES import encryptMsg
+from msg.AES import decryptMsg
+
+# Generate random AES key
+random_key = bytearray()
+for i in range(16):
+    random_key.append(randint(0,255))
+
+def to_encode(email):
+    """To send msg to encode"""
+    # Remove & and = if user added to name
+    email.replace('&','')
+    email.replace('=','')
+    uid = 10
+    role = 'user'
+    encoded_as = '&'.join(['email='+email,
+                           'uid='+str(uid),
+                           'role='+role])
+    return encoded_as.encode()
+
+def profile_for(email, random_key):
+    """To follow the naming from the text, profile_for generates encoded msg"""
+    return encryptMsg(to_encode(email), random_key)
+
+def decode(msg, random_key):
+    """To decode msg"""
+    return decryptMsg(msg, random_key)
+
+if __name__ == '__main__':
+
+    # Create encoding
+    email = input("Enter your email\n")
+    encoding = profile_for(email, random_key)
+    print(encoding)
+
+    # Parse object
+    d_email,d_uid,d_role = decode(encoding, random_key).decode().split('&')
+    print(d_email,d_uid,d_role)
+
+# TODO: This parses simply.  What we need to do is find out how to inject admin into the end
+#    How to do this, size correctly.
+#    We will need to find out the key.  Once we have the key, we can find out how to replace it with admin.
+#    We know the format of email, uid, role.  How do we get role seperate.  We need to generate space.
+#  Remember this is 16 byte blocks.
+
+# TODO: Find the key for you email in the first block.  Make your email large enough to generate the spaced block.
+#  Figure out the key used.  (Is there a quick way of doing this?)  Once you have the key, you can generate a last
+#  block with padding.
+
+# First 5 bytes is email=  then your input 1 byte(&) then uid=10(6) then 1 byte then role type plus padding
+# Your email can be 2 bytes or 18 bytes

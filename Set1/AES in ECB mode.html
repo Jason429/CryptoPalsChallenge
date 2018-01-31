@@ -1,0 +1,153 @@
+<html><head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta content="Thomas Ptacek, Sean Devlin, and Alex Balducci" name="author">
+    <title>AES in ECB mode</title>
+    <link href="AES%20in%20ECB%20mode_files/bootstrap.css" media="all" rel="stylesheet" type="text/css">
+    <link href="AES%20in%20ECB%20mode_files/app.css" media="all" rel="stylesheet" type="text/css">
+    <link href="AES%20in%20ECB%20mode_files/fonts.css" rel="stylesheet" type="text/css">
+    <link href="AES%20in%20ECB%20mode_files/prism.css" rel="stylesheet" type="text/css">
+    <script src="AES%20in%20ECB%20mode_files/ga.js" async="" type="text/javascript"></script><script src="AES%20in%20ECB%20mode_files/prism.js"></script>
+    <style>
+      body { 
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>
+            <a href="http://cryptopals.com/">the matasano crypto challenges</a>
+          </h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="breadcrumb">
+            <li>
+              <a href="http://cryptopals.com/">Challenges</a>
+            </li>
+            <li>
+              <a href="http://cryptopals.com/sets/1">Set 1</a>
+            </li>
+            <li class="active">
+              <a href="http://cryptopals.com/sets/1/challenges/7">Challenge 7</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <ul class="nav nav-pills nav-stacked" id="languages">
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/cpp">C++</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/ruby">Ruby</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/python">Python</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/golang">Golang</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/csharp">C#</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/java">Java</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/scala">Scala</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/haskell">Haskell</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/php">PHP</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="http://cryptopals.com/sets/1/challenges/7/c">C</a>
+  </li>
+  
+  
+</ul>
+
+        </div>
+        <div class="col-md-10">
+          <h3>AES in ECB mode</h3>
+          <p>
+  The Base64-encoded content
+  <a href="http://cryptopals.com/static/challenge-data/7.txt">in this file</a>
+  has been encrypted via AES-128 in ECB mode under the key
+</p>
+<pre>"YELLOW SUBMARINE".</pre>
+<p>
+  (case-sensitive, without the quotes; exactly 16 characters; I like "YELLOW SUBMARINE" because it's exactly 16 bytes long,
+  and now you do too).
+</p>
+<p>
+  Decrypt it. You know the key, after all.
+</p>
+<p>
+  Easiest way: use OpenSSL::Cipher and give it AES-128-ECB as the cipher.
+</p>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Do this with code.</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      You can obviously decrypt this using the OpenSSL command-line tool, but we're having you get ECB
+      working in code for a reason. You'll need it <i>a lot</i> later on, and not just for attacking ECB.
+    </p>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-68682-6']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</body></html>

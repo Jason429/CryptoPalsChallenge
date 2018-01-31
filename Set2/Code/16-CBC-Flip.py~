@@ -1,0 +1,87 @@
+#! /usr/bin/python3
+
+# Global imports
+from random import randint
+
+# Custom imports
+from msg.CBC_Flip import insert, inspect, manual_size, generateMod
+
+print("\nTo modify the encrypted msg, user input needs to match the block size")
+print("and be injected twice.  The first block will be corrupted but the second")
+print("block will be manipulated.")
+print("")
+
+blocksize = input("What is the block size (in bytes)?\n")
+# blocksize = 16
+blocksize = abs(int(blocksize))
+
+user = input("\nNeed input <Johnny 5>\n")
+# user="admin=yes;johnny=l33t"
+
+user = manual_size(user, blocksize)
+original = user   # To use with XOR later
+
+# Make the user input the same size as the block
+
+user = (user[0:blocksize]) * 2
+print("We are using [{}] to inject.\n".format(user))
+
+pre_len = input("How many bytes are part of the prepended msg?\n")
+pre_len = abs(int(pre_len))
+
+padding = input("How much padding is required before the inject block?\n0 is acceptable\n")
+padding = abs(int(padding))
+
+user = ("A" * padding) + user
+
+# Confirm before sending
+
+print("You are about to send [{}] to the server.  ".format(user), end='')
+print("There is {} bytes of pre msg and padding (should be a factor of blocksize)".format(pre_len + padding))
+confirm = input("Is this correct? (y/n)")
+if confirm.lower()[0] != 'y':
+    print("Recheck you numbers and come back.")
+    print("I'll be waiting ..............\n\n")
+    quit()
+    
+
+
+encrypted, padded, key, iv = insert(user, blocksize)
+print(encrypted)
+
+# Here is where you play with the injection
+
+print("\n\nMsg came back.  Ready to play with bit toggling.\nWhat do you want your msg to be?")
+print("(REMEMBER: Msg must be {} bytes.)".format(blocksize))
+changeto = input("")
+changeto = manual_size(changeto, blocksize, change="YES")
+
+mod = generateMod(encrypted, original, changeto, pre_len + padding, blocksize)
+
+# pairs = inspect(encrypted, key, iv)
+pairs = inspect(mod, key, iv)
+
+
+print("\n\nIs there an administrator in the house?\n")
+yes = False
+for admin in [b'admin', b'Admin', b'ADMIN']:
+    for i in pairs.keys():
+        if admin == i:
+            print("Found a live one!")
+            print("{} : {}".format(admin, pairs[admin]))
+            yes = True
+        if yes: break
+    if yes: break
+    
+if not yes:
+    print("He's hiding in the basement getting drunk.  Better try harder :)")
+
+print("\nTHE RESULTS ARE IN:")
+for key in pairs.keys():
+    print(key,":", pairs[key])
+
+
+              
+
+
+

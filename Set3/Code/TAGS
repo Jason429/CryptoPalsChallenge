@@ -1,0 +1,148 @@
+
+msg/AES.py,745
+def blockp(21,488
+def _initarray128(28,605
+def _sizetest(35,717
+def make128block(59,1557
+def deBlock(83,2210
+def xorBlock(92,2457
+def _send_Rcon(137,6179
+def subBytes(144,6267
+def shiftRows(161,6859
+def mult(197,7873
+def mixColumns(219,8746
+def genKeySchedule(239,9630
+def encryptAES(278,11369
+def encryptMsg(307,12465
+def encryptMsgCBC(332,13393
+def decryptAES(359,14493
+def decryptMsg(393,15862
+def decryptMsgCBC(417,16700
+class Encryption_Oracle_EBC:Encryption_Oracle_EBC442,17661
+    def __init__(460,18470
+    def _randomMode(488,19516
+    def _randomKeyOrIV(499,19752
+class Oracle_Inject(507,19977
+    def __init__(513,20126
+    def _encrypt(528,20710
+    def testForEBC(536,21029
+    def locationEBC(556,21827
+
+msg/AES.py~,19
+def blockp(14,330
+
+msg/CBC_Flip.py,227
+def insert(20,506
+def inspect(33,770
+def manual_size(41,1006
+def generateMod(57,1476
+def _strip(87,2447
+def _resize_msg(93,2535
+def _parse(110,3142
+def _randomize(131,3672
+def _userinput(143,3945
+def _padmsg(155,4356
+
+msg/CBC_Flip.py~,16
+    msg 17,371
+
+msg/CBC_Pad_Oracle.py,242
+def choose(33,1317
+def random_key(43,1537
+class Oracle_Server(52,1718
+    def __init__(56,1934
+    def cipher_iv(77,2786
+    def test_padding(82,2923
+    def print_string_list(88,3182
+    def breakblock(94,3340
+    def work(131,4823
+
+msg/CBC_Pad_Oracle.py~,89
+from random import choice,4,43
+from .padding import padtest,11,210
+string_list 15,286
+
+msg/convert.py,131
+def byte_binary(22,504
+def convert_binary(37,799
+def msg_to_raw(49,1094
+def raw_to_hexstr(88,2228
+def check_for_file(101,2544
+
+msg/convert.py~,14
+__tstr=7,136
+
+msg/CTR.py,92
+def _xor(16,298
+def _nonce_generator(20,343
+    def convert(32,616
+def ctr_crypt(44,862
+
+msg/CTR.py~,20
+    divisor 13,235
+
+msg/defs.py,576
+class DCRYPT:DCRYPT6,69
+    def __init__(9,131
+    def next_iter(22,726
+    def convert(27,842
+    def standard_xor(33,1104
+    def run_single_xor(37,1210
+def single(41,1277
+def file(79,2497
+def cleanmsg(84,2610
+def xor(102,3117
+def xor_iter(124,3873
+def deviation(133,4028
+def character_check(152,4810
+def dictionary(174,5511
+def englishtest(246,7736
+def xormsg(265,8384
+def quality(274,8570
+def array_quality(290,8956
+def run(312,9609
+def hamming_distance(331,10193
+def hamming_distance_test(343,10531
+def skip_gen(370,11496
+def insert_gen(385,11882
+
+msg/defs.py~,103
+class DCRYPT:DCRYPT4,54
+        self.ANSWER ANSWER15,662
+            pop 60,2180
+    b 311,10203
+
+msg/englishtest.py,22
+def englishtest(4,24
+
+msg/test.txt,121
+Uğä>ÜĞi€i1,0
+Uğä>ÜĞi€ŠÁ,-g«¼ßBg«¼ß1,0
+Uğä>ÜĞi€ŠÁ,-g«¼ßBîõÔìù2¾‚Ã'pDÓ®¦~B'¦úŞU’ˆëí¢ïÅC,ˆu¼?éÊâÿ¯SÔS1,0
+
+msg/funcs/padding.py,58
+def pkcs7(3,21
+def padtest(26,790
+def checkfit(51,1662
+
+msg/funcs/__init__.py,0
+
+msg/top_100_words.txt,0
+
+msg/top_1000_words.txt,0
+
+msg/padding.py~,0
+
+msg/__init__.py,0
+
+msg/AES.pyc,0
+
+temp.py,0
+
+20-Break_Fixed_Nonce_Stat.py,0
+
+19-CTR_Fixed-Nonce.py,0
+
+18-CTR_Cyper_Stream_Mode.py,0
+
+17-CBC-Pad_Oracle.py,0

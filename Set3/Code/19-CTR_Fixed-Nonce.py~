@@ -1,0 +1,45 @@
+#! /usr/bin/python3
+
+# Global imports
+
+import struct
+from base64 import b64decode, b64encode
+
+# Package imports
+
+from msg.CTR import ctr_crypt 
+from msg.AES import decryptMsg, encryptMsg
+
+
+# b_nonce is short of binary nonce (done in little endian)
+
+string = "L77na/nrFsKvynd6HzOoG7GHTLXsTVu9qvY/2syLXzhPweyyMTJULu/6/kXX0KSvoOLSFQ=="
+d_string = b64decode(string)
+#d_string = b'This is to test that the language is OK and it is just something in the decoding of base64 that I screwed up!!!!!'
+print("Original decoded string ---------------------------")
+print(d_string)
+
+print("\nEncrypted is:")
+enc = ctr_crypt(d_string, b'YELLOW SUBMARINE', 0)
+print(enc)
+
+print("\nAnd now decrypted is:")
+dec = ctr_crypt(enc, b'YELLOW SUBMARINE', 0)
+print(dec)
+
+print("\nComparing original to output")
+#print(string, "\n", b64encode(dec))
+
+if d_string == dec:
+    print("Everything matches")
+else:
+    print("Something is wrong.  No match.")
+
+
+      
+
+
+
+
+
+

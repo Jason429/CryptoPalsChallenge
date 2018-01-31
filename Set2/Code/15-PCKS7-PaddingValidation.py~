@@ -1,0 +1,20 @@
+#! /usr/bin/python3
+
+from msg.padding import padtest as pt 
+
+msg = input("Enter string with padding (eg \x02\x02)\n")
+block_size = input("Enter block size in bytes\n")
+
+try:
+    block_size = int(block_size)
+except:
+    print("Block size must be able to be an int")
+    exit()
+    
+b_msg = bytearray(msg.encode())
+print("Verifying...")
+print("{}".format(b_msg))
+print("Block size is {}".format(block_size))
+
+
+

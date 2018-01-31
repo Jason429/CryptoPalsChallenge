@@ -1,0 +1,16 @@
+# The php key
+
+# e3472a03b2a2d6bbf98df4a4b92a9fa2daf8fd3a43f65b39adc62414c3c24aa3
+
+# Starts at 13468
+
+# Pattern in file 9203F89C3A2CAD3E1C79C673F1697574 (bust)
+
+# Pattern in file B17F50972F46CD9E62E47FA0B2FF406C
+
+
+(at file.seek(208) is the start of duplication every 16 bytes)
+
+Stream
+        46 POST /354592060678859/ HTTP/1.1
+        38 POST /354592060678859/ HTTP/1.1
